@@ -40,6 +40,9 @@ body {
       margin-top: 13%;
   }
   
+  #Data_Sources{
+    text-align: center;
+  }
   .roasting h4:hover:not(.active){
     color:rgba(107,0,1,1.00);
     transform: scale(1.02);
