@@ -67,12 +67,14 @@ body {
     font-weight: 400;
   }
   
-  .spectrum div {
+  .spectrum{
     font: inherit;
     padding: 0 20px;
     color: #FFFFFF;
     overflow: auto;
     opacity: 0.9;
+    height: 100%;
+    border-radius: 0;
   }
   
   .spectrum p {
@@ -80,47 +82,9 @@ body {
     text-align: left;
   }
   
-  /* Roast types */
-  .green {
-    background-color: #9EB599;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-  
-  }
-  
-  .light {
-    background-color:  #683C2C;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-  }
-  
-  .JPL_Research {
-    background-color: #4C352D;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-  }
-  
-  .AM_Research {
-    background-color: #352926;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-  }
-  
-  .colab_research {
-    background-color: #141212;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2 px solid black;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;	
-  }
-  
   /* Typography */
   h1 {
-    font-family: 'Covered By Your Grace', sans-serif;
+    font-family:sans-serif;
     font-size: 100px;
     line-height: 76px;
     margin: 0;
@@ -128,7 +92,6 @@ body {
     text-align: center;
     top: 20%;
     color: rgba(92,99,141,1.00);
-    background-color: aqua;
   }
   
   h2 {
@@ -195,14 +158,6 @@ body {
     letter-spacing: 2px;
   }
   
-  
-  .JPL_Research h4{
-      color: rgba(152,97,74,1.00);
-  }
-  
-  .AM_Research h4{
-      color: rgba(137,108,108,1.00);
-  }
   
   #testing_color{
       text-align: center;
@@ -369,3 +324,63 @@ body {
       background: linear-gradient(gray, rgba(214,201,182,1.00));
   }
   
+  /*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
