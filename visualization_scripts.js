@@ -89,7 +89,7 @@ function updateImg(count) {
                 }
 
                 var para = document.createElement("P");
-                para.innerText = "Decision Tree Classifier with Adaboost Classafier: .99383";
+                para.innerText = "Decision Tree Classifier with Adaboost Classafier: .99383.  Link to final kernal: \"https://shujahahmad.github.io/datathon/kernel219822b862.html\"";
                 div.appendChild(para);
 
               }
