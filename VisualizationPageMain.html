@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="visualization_scripts.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -44,15 +45,15 @@
       <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
       <div class="custom-select" style="width:200px;">
         <select id="zoneSelect">
-          <option value="0">Select Sensor:</option>
-          <option value="1">Sensor 1</option>
-          <option value="2">Sensor 2</option>
-          <option value="3">Sensor 3</option>
-          <option value="4">Sensor 4</option>
-          <option value="5">Sensor 5</option>
+          <option value="0">Comparing Sensors - PairPlot</option>
+          <option value="1">KNN Model Results</option>
+          <option value="2">Decision Tree Regression Results</option>
+          <option value="3">Linear Regression Results</option>
+          <option value="4">Decision Tree Classifier Results<option>
+          <option value="5">Decision Tree Classifier with Adaboost Classifier Results</option>
         </select>
       </div>
-
+      
       <script>
         var x, i, j, selElmnt, a, b, c;
         /*look for any elements with the class "custom-select":*/
@@ -99,12 +100,18 @@
             /*when the select box is clicked, close any other select boxes,
             and open/close the current select box:*/
             e.stopPropagation();
+            //printTest(this);
             closeAllSelect(this);
             this.nextSibling.classList.toggle("select-hide");
             this.classList.toggle("select-arrow-active");
           });
         }
-
+        function printTest(){
+          console.log("You clicked me.");
+          var zone = document.getElementById("zoneSelect");
+          console.log(zone.value);
+        }
+        
         function closeAllSelect(elmnt) {
           /*a function that will close all select boxes in the document,
           except the current select box:*/
@@ -124,98 +131,9 @@
             }
           }
           count++;
-          updateGraph(count);
-          // var zone = document.getElementById("zoneSelect");
-          // var temp = document.getElementById("myDiv");
-          // if (count % 2 == 0) {
-          //   if (zone.value == "1") {
-          //     var x = [];
-          //     for (var i = 0; i < 10; i++) {
-          //       x[i] = Math.random();
-
-
-          //       var trace = {
-          //         x: x,
-          //         type: 'histogram',
-          //       };
-          //       var data = [trace];
-          //       Plotly.newPlot(temp, data, {}, {
-          //         showSendToCloud: true
-          //       });
-          //     }
-          //   } else if (zone.value = "0") {
-          //     var x = [];
-          //     for (var i = 0; i < 1000; i++) {
-          //       x[i] = Math.random();
-          //     }
-
-          //     var trace = {
-          //       x: x,
-          //       type: 'histogram',
-          //     };
-          //     var data = [trace];
-          //     Plotly.newPlot(temp, data, {}, {
-          //       showSendToCloud: true
-          //     });
-          //   } else if (zone.value = "2") {
-          //     var x = [];
-          //     for (var i = 0; i < 1000; i++) {
-          //       x[i] = Math.random();
-          //     }
-
-          //     var trace = {
-          //       x: x,
-          //       type: 'histogram',
-          //     };
-          //     var data = [trace];
-          //     Plotly.newPlot(temp, data, {}, {
-          //       showSendToCloud: true
-          //     });
-          //   } else if (zone.value = "3") {
-          //     var x = [];
-          //     for (var i = 0; i < 1000; i++) {
-          //       x[i] = Math.random();
-          //     }
-
-          //     var trace = {
-          //       x: x,
-          //       type: 'histogram',
-          //     };
-          //     var data = [trace];
-          //     Plotly.newPlot(temp, data, {}, {
-          //       showSendToCloud: true
-          //     });
-          //   } else if (zone.value = "4") {
-          //     var x = [];
-          //     for (var i = 0; i < 1000; i++) {
-          //       x[i] = Math.random();
-          //     }
-
-          //     var trace = {
-          //       x: x,
-          //       type: 'histogram',
-          //     };
-          //     var data = [trace];
-          //     Plotly.newPlot(temp, data, {}, {
-          //       showSendToCloud: true
-          //     });
-          //   } else if (zone.value = "5") {
-          //     var x = [];
-          //     for (var i = 0; i < 1000; i++) {
-          //       x[i] = Math.random();
-          //     }
-
-          //     var trace = {
-          //       x: x,
-          //       type: 'histogram',
-          //     };
-          //     var data = [trace];
-          //     Plotly.newPlot(temp, data, {}, {
-          //       showSendToCloud: true
-          //     });
-          //   }
-          //   count = 0;
-          // }
+          updateImg(count);
+          //updateGraph(count);
+          
 
 
         }
@@ -223,46 +141,24 @@
         then close all select boxes:*/
         var count = 0;
         document.getElementById("zoneSelect").addEventListener("click", closeAllSelect);
+
       </script>
       <!-- Plotly chart will be drawn inside this DIV -->
       <div id="myDiv"></div>
+      <div id="results2"></div>
       <script>
-        var x = [];
-        for (var i = 0; i < 100; i++) {
-          x[i] = Math.random();
-        }
+          var img = new Image();
+                var div = document.getElementById('results2');
+                
+          img.onload = function(){
+                div.appendChild(img);
+          }
 
-        var trace = {
-          x: x,
-          type: 'histogram',
-        };
-        var data = [trace];
-        Plotly.newPlot('myDiv', data, {}, {
-          showSendToCloud: true
-        });
-      </script>
+          img.src = "https://github.com/ShujahAhmad/datathon/blob/master/DataPNG.png?raw=true";
+        </script>
     </div>
   </div>
-  <!--
-	<div id = "testing_stuff">
-	<div id = "testing_color">
-    <p class = "one">WHATEVER FONT</p>
-	<p class = "two">COLLABORATED RESEARCH</p>
-	<p class="three">Monty Python &amp; The Holy Grail</p>
-	</div>
-  </div>
-
-  <div class="grid">
-    <div class="box a">Montserrat</div>
-    <div class="box b">Oswald</div>
-    <div class="box c">Raleway</div>
-    <div class="box d">Josefin Sans</div>
-  </div>
- 
-  <div class = "testing_databases">
-  	
-  </div>
--->
+  
 
 
 <section class="lower_footer">
@@ -278,7 +174,7 @@
         </h2>
         
         <h2>
-          <a href="" target="_blank">Shujah's LinkedIn</a>
+          <a href="https://drive.google.com/file/d/0ByFGFHJrG7RRVkx2S214WkZocHpEaEdfRHBxOC1jNFRMVmhv/view?usp=sharing" target="_blank">Shujah's LinkedIn</a>
         </h2>
         
         <h2>
@@ -288,8 +184,33 @@
       </ul>
     </nav>
   </div>
+
+  <script>
+     $(document).ready(function () {
+        $('.group').hide();
+        $('#selectMe').change(function () {
+          $('.group').hide();
+          $('#'+$(this).val()).show();
+        })
+      });
+  </script>
+      
+      <div id="0" class="group">asdf</div>
+      <div id="1" class="group">kljh</div>
+      <div id="2" class="group">zxcv</div>
+      <div id="3" class="group">qwerty</div>
+      <div id="4" class="group">poop</div>
+      <div id="5" class="group">poop2</div>
+      <select id="selectMe">
+        <option value="0">option1</option>
+        <option value="1">option2</option>
+        <option value="2">option3</option>
+        <option value="3">option4</option>
+      </select>
 </section>
-	
+  
+
+
 </body>
 </html>
 <!DOCTYPE html>

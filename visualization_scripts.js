@@ -10,7 +10,96 @@ var trace = {
 var data = [trace];
 Plotly.newPlot('myDiv', data, {}, {showSendToCloud: true});
 
+
+function updateImg(count) {
+  //console.log("Clicked");
+  var zone = document.getElementById("zoneSelect");
+            var img = new Image();
+            var div = document.getElementById('results2');
+            if (count % 2 == 0) {
+              if (zone.value == "0") {
+                
+                if (div.hasChildNodes()){
+                  div.removeChild(div.childNodes[0])
+                }else{
+                  console.log("no init image located");
+                }
+                img.onload = function(){
+                  div.appendChild(img);
+                }
+
+                img.src = "https://github.com/ShujahAhmad/datathon/blob/master/DataPNG.png?raw=true";
+
+              } else if (zone.value == "1") {
+                console.log("1");
+                var img = new Image();
+                var div = document.getElementById('results2');
+                if (div.hasChildNodes()){
+                  div.removeChild(div.childNodes[0])
+                }else{
+                  console.log("no init image located");
+                }
+
+                var para = document.createElement("P");
+                para.innerText = "KNN Model initially reach .5670 accuracy";
+                div.appendChild(para);
+               
+
+              } else if (zone.value == "2") {
+                console.log("2");
+                if (div.hasChildNodes()){
+                  div.removeChild(div.childNodes[0])
+                }else{
+                  console.log("no init image located");
+                }
+                var para = document.createElement("P");
+                para.innerText = "Decision Tree Regression Accuracy: .98995";
+                div.appendChild(para);
+               
+
+              } else if (zone.value == "3") {
+                console.log("3");
+                if (div.hasChildNodes()){
+                  div.removeChild(div.childNodes[0])
+                }else{
+                  console.log("no init image located");
+                }
+
+                var para = document.createElement("P");
+                para.innerText = "Linear Regression Results: .9888";
+                div.appendChild(para);
+
+              } else if (zone.value == "4") {
+                console.log("4");
+                if (div.hasChildNodes()){
+                  div.removeChild(div.childNodes[0])
+                }else{
+                  console.log("no init image located");
+                }
+                var para = document.createElement("P");
+                para.innerText = "Decision Tree Classifier: .99276";
+                div.appendChild(para);
+
+              } else if (zone.value == "5") {
+                console.log("5");
+                if (div.hasChildNodes()){
+                  div.removeChild(div.childNodes[0])
+                }else{
+                  console.log("no init image located");
+                }
+
+                var para = document.createElement("P");
+                para.innerText = "Decision Tree Classifier with Adaboost Classafier: .99383";
+                div.appendChild(para);
+
+              }
+              count = 0;
+            }
+          }
+
+
 function updateGraph(count) {
+//console.log("Clicked");
 var zone = document.getElementById("zoneSelect");
           var temp = document.getElementById("myDiv");
           if (count % 2 == 0) {
@@ -103,3 +192,5 @@ var zone = document.getElementById("zoneSelect");
             count = 0;
           }
         }
+
+
